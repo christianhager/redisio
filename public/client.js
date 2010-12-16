@@ -1,6 +1,1 @@
-
-if (typeof window != 'undefined'){
-	WEB_SOCKET_SWF_LOCATION = '/WebSocketMain.swf';
-}
-
-require('socket.io.js')
+var io = require('./vendor/Socket.IO/socket.io.js')
