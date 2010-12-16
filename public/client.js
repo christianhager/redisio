@@ -1,5 +1,5 @@
 
-
+var io = require("../vendor/Socket.IO")
 
 var Redisio = function(options){
 	this.host = options.host;
