@@ -16,48 +16,48 @@ var http = require('http')
     
 var fileServer = new nstatic.Server("./public");
 
-server = http.createServer(function(req, res){
-	req.addListener("end", function() {
+server = http.createServer(function(request, response){
+	request.addListener("end", function() {
 
-    fileServer.serve(req, response, function (err, res) {
+    fileServer.serve(request, response, function (err, res) {
       if (err) { // An error as occured
-        sys.error("> Error serving " + req.url + " - " + err.message);
+        sys.error("> Error serving " + request.url + " - " + err.message);
         response.writeHead(err.status, err.headers);
         response.end();
       } else { // The file was served successfully
-        sys.log("Serving " + req.url + " - " + res.message);
+        sys.log("Serving " + request.url + " - " + res.message);
       }
     });
 
   });
 
   // your normal server code
-  var path = url.parse(req.url).pathname;
+  var path = url.parse(request.url).pathname;
   switch (path){
     case '/':
-      res.writeHead(200, {'Content-Type': 'text/html'});
-      res.write('<h1>Welcome. Try the <a href="/chat.html">chat</a> example.</h1>');
-      res.end();
+      response.writeHead(200, {'Content-Type': 'text/html'});
+      response.write('<h1>Welcome. Try the <a href="/chat.html">chat</a> example.</h1>');
+      response.end();
       break;
       
     case '/json.js':
     case '/chat.html':
       fs.readFile(__dirname + path, function(err, data){
         if (err) return send404(res);
-        res.writeHead(200, {'Content-Type': path == 'json.js' ? 'text/javascript' : 'text/html'})
-        res.write(data, 'utf8');
-        res.end();
+        response.writeHead(200, {'Content-Type': path == 'json.js' ? 'text/javascript' : 'text/html'})
+        response.write(data, 'utf8');
+        response.end();
       });
       break;
       
-    default: send404(res);
+    default: send404(response);
   }
 }),
 
-send404 = function(res){
-  res.writeHead(404);
-  res.write('404');
-  res.end();
+send404 = function(response){
+  response.writeHead(404);
+  response.write('404');
+  response.end();
 };
 
 server.listen(8999);
