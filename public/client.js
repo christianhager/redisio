@@ -1,1 +1,1 @@
-alert("test")
+var io = require('./vendor/socket.io')
