@@ -17,7 +17,7 @@ var http = require('http')
 var fileServer = new nstatic.Server("./public");
 
 server = http.createServer(function(req, res){
-	request.addListener("end", function() {
+	req.addListener("end", function() {
 
     fileServer.serve(request, response, function (err, res) {
       if (err) { // An error as occured
