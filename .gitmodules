@@ -7,3 +7,6 @@
 [submodule "vendor/socket.io.client"]
 	path = vendor/socket.io.client
 	url = git://github.com/LearnBoost/Socket.IO.git
+[submodule "vendor/Socket.IO"]
+	path = vendor/Socket.IO
+	url = https://github.com/LearnBoost/Socket.IO.git
