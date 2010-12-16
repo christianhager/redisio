@@ -1,2 +1,2 @@
-var io = require('./vendor/Socket.IO/socket.io.js')
+var io = require('./vendor/socket.io')
 
