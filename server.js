@@ -10,7 +10,7 @@ var http = require('http')
   , url = require('url')
   , fs = require('fs')
   , io = require('./vendor/socket.io.server')
-  , nstatic  = require("./vendor/node-static/lib")
+	, nstatic = require("node-static");
   , sys = require('sys')
   , server;
     
