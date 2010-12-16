@@ -9,11 +9,28 @@ require("fs").readdirSync("./vendor").forEach(function(name){
 var http = require('http')
   , url = require('url')
   , fs = require('fs')
-  , io = require('./vendor/socket.io.server')
+  , io = require('./vendor/socket.io.server'),
+  , nstatic  = require("./vendor/node-static"),
   , sys = require('sys')
   , server;
     
+var fileServer = new nstatic.Server("./public");
+
 server = http.createServer(function(req, res){
+	request.addListener("end", function() {
+
+    fileServer.serve(request, response, function (err, res) {
+      if (err) { // An error as occured
+        sys.error("> Error serving " + request.url + " - " + err.message);
+        response.writeHead(err.status, err.headers);
+        response.end();
+      } else { // The file was served successfully
+        sys.log("Serving " + request.url + " - " + res.message);
+      }
+    });
+
+  });
+
   // your normal server code
   var path = url.parse(req.url).pathname;
   switch (path){
