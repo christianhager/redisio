@@ -19,13 +19,13 @@ var fileServer = new nstatic.Server("./public");
 server = http.createServer(function(req, res){
 	req.addListener("end", function() {
 
-    fileServer.serve(request, response, function (err, res) {
+    fileServer.serve(req, response, function (err, res) {
       if (err) { // An error as occured
-        sys.error("> Error serving " + request.url + " - " + err.message);
+        sys.error("> Error serving " + req.url + " - " + err.message);
         response.writeHead(err.status, err.headers);
         response.end();
       } else { // The file was served successfully
-        sys.log("Serving " + request.url + " - " + res.message);
+        sys.log("Serving " + req.url + " - " + res.message);
       }
     });
 
