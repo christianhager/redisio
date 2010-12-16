@@ -1,2 +1,2 @@
-var io = require('./vendor/socket.io')
-
+<script src="/json.js"></script> <!-- for ie -->
+<script src="/socket.io.js"></script>
