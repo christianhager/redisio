@@ -1,0 +1,3 @@
+[submodule "vendor/socket.io.server"]
+	path = vendor/socket.io.server
+	url = git://github.com/LearnBoost/Socket.IO-node.git

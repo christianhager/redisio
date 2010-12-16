@@ -9,7 +9,7 @@ require("fs").readdirSync("./vendor").forEach(function(name){
 var http = require('http')
   , url = require('url')
   , fs = require('fs')
-  , io = require('./vendor/Socket.IO-node')
+  , io = require('./vendor/socket.io.server')
   , sys = require('sys')
   , server;
     
