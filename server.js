@@ -9,8 +9,8 @@ require("fs").readdirSync("./vendor").forEach(function(name){
 var http = require('http')
   , url = require('url')
   , fs = require('fs')
-  , io = require('./vendor/socket.io.server'),
-  , nstatic  = require("./vendor/node-static"),
+  , io = require('./vendor/socket.io.server')
+  , nstatic  = require("./vendor/node-static")
   , sys = require('sys')
   , server;
     
