@@ -9,3 +9,9 @@ var Redisio = function(options){
     {rememberTransport: false, port: this.port, secure: this.options.secure}
   );
 }
+
+Redisio.fn = Redisio.prototype;
+Redisio.fn.proxy = function(func){
+  var thisObject = this;
+  return(function(){ return func.apply(thisObject, arguments); });
+};
