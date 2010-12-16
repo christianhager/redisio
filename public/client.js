@@ -1,5 +1,7 @@
 
-var io = require("../vendor/Socket.IO")
+require("fs").readdirSync("./vendor").forEach(function(name){
+  require.paths.unshift("./vendor/" + name + "/lib");  
+});
 
 var Redisio = function(options){
 	this.host = options.host;
