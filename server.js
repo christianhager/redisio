@@ -31,35 +31,8 @@ server = http.createServer(function(request, response){
 
   });
 
-  // your normal server code
-  var path = url.parse(request.url).pathname;
-  switch (path){
-    case '/':
-      response.writeHead(200, {'Content-Type': 'text/html'});
-      response.write('<h1>Welcome. Try the <a href="/chat.html">chat</a> example.</h1>');
-      response.end();
-      break;
-      
-    case '/json.js':
-    case '/chat.html':
-      fs.readFile(__dirname + path, function(err, data){
-        if (err) return send404(res);
-        response.writeHead(200, {'Content-Type': path == 'json.js' ? 'text/javascript' : 'text/html'})
-        response.write(data, 'utf8');
-        response.end();
-      });
-      break;
-      
-    default: send404(response);
-  }
-}),
-
-send404 = function(response){
-  response.writeHead(404);
-  response.write('404');
-  response.end();
-};
-
+  
+});
 server.listen(8999);
 
 // socket.io, I choose you
